@@ -7,7 +7,9 @@ include_directories(include)
 
 add_executable(
         TP3 src/main.cpp
-
-        src/Pion.cpp
         include/Pion.h
+        src/Pion.cpp
+
+        include/JoueurException.h
+        src/JoueurException.cpp
 )
