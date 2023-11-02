@@ -1,0 +1,78 @@
+@startuml TP3
+
+abstract class Jeux {
+  {abstract} + demarrerPartie() : void
+  {abstract} + demanderAJoueurDeJouer(Joueur joueur)
+  {abstract} + initGrilleDeJeu(int ligne, int colonne) : Grille
+  {abstract} + verifierSiVainqueur()
+
+  + getGrille() : Grille
+}
+
+class Morpion {
+  + Morpion(Joueur joueur1, Joueur joueur2)
+  
+  + demarrerPartie()
+  + demanderAJoueurDeJouer(Joueur joueur)
+  + initGrilleDeJeu(int ligne, int colonne) : Grille
+  + verifierSiVainqueur()
+}
+
+class Puissane4 {
+  + Puissane4(Joueur joueur1, Joueur joueur2)
+  
+  + demarrerPartie()
+  + demanderAJoueurDeJouer(Joueur joueur)
+  + initGrilleDeJeu(int ligne, int colonne) : Grille
+  + verifierSiVainqueur()
+}
+
+abstract class Joueur {
+  - pseudo : string
+  + getPseudo() : string
+  {abstract} + jouer(List<Pion> pionsPossibles): Pion
+}
+
+enum TypeJoueur {
+  HUMAIN
+  IA
+}
+
+class Humain {
+  + jouer(List<Pion> pionsPossibles) : Pion
+}
+
+class IA {
+  + jouer(List<Pion> pionsPossibles) : Pion
+}
+
+class Grille {
+  - nbLignes : int
+  - nbColonnes : int
+  - grille : int [nbLignes][nbColonnes]
+  - pionsJouees : HashMap<string pseudoJoueur, List<Pion> coordonnees>
+  
+  + getEmplacementsLibres() : List<Pion>
+  + getEmplacementsJouees() : List<Pion>
+  + afficheGrille() : void
+  + ajouterPionGrille(Joueur joueur, Pion pion) : void
+}
+
+exception ExceptionJoueur {
+  - message : string
+  + ExeceptionJoueur(string message)
+}
+
+Joueur <|.. Humain
+Joueur <|.. IA
+Joueur -- TypeJoueur : typeJoueur
+Jeux "1  " o-- "2  " Joueur : - List<Joueur> joueurs
+Jeux "1  " *-- "1  " Grille : - grilleDeJeu
+Jeux <|.. Morpion
+Jeux <|.. Puissane4
+
+note "Si un joueur joue un pion qu'il n'est pas autorisé" as note1
+ExceptionJoueur .. note1
+note1 .. Joueur::jouer
+
+@enduml
