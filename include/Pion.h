@@ -23,6 +23,8 @@ public:
     [[nodiscard]] int getX() const;
 
     [[nodiscard]] int getY() const;
+
+    [[nodiscard]] std::string getCoordonnees() const;
 };
 
 
