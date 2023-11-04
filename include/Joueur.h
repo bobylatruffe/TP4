@@ -5,16 +5,15 @@
 #ifndef TP3_JOUEUR_H
 #define TP3_JOUEUR_H
 
-#include <iostream>
-#include <list>
-#include <memory>
 #include "Pion.h"
+#include <memory>
+#include <vector>
 
 using namespace std;
 
 enum TypeDeJoueur {
-    Humain,
-    IA
+    HUMAIN_PLAYER,
+    IA_PLAYER
 };
 
 class Joueur {
@@ -27,7 +26,7 @@ public:
 
     [[nodiscard]] string getPseudo() const;
 
-    virtual Pion jouer(list<std::shared_ptr<Pion>> pionsPossibles) const = 0;
+    virtual std::shared_ptr<Pion> jouer(vector<std::shared_ptr<Pion>> &pionsPossibles) = 0;
 };
 
-#endif //TP3_JOUEUR_H
+#endif//TP3_JOUEUR_H
