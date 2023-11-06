@@ -6,6 +6,7 @@ abstract class Jeux {
   {abstract} + initGrilleDeJeu(int ligne, int colonne) : Grille
   {abstract} + verifierSiVainqueur()
 
+  + ajouterUnJoueur(Joueur joueur) : void
   + getGrille() : Grille
 }
 
@@ -34,11 +35,11 @@ abstract class Joueur {
 }
 
 enum TypeJoueur {
-  HUMAIN
+  HUMAIN_PLAYER
   IA
 }
 
-class Humain {
+class HUMAIN_PLAYER {
   + jouer(List<Pion> pionsPossibles) : Pion
 }
 
@@ -63,7 +64,7 @@ exception ExceptionJoueur {
   + ExeceptionJoueur(string message)
 }
 
-Joueur <|.. Humain
+Joueur <|.. HUMAIN_PLAYER
 Joueur <|.. IA
 Joueur -- TypeJoueur : typeJoueur
 Jeux "1  " o-- "2  " Joueur : - List<Joueur> joueurs
