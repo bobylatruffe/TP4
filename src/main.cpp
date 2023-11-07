@@ -7,22 +7,26 @@
 #include <iostream>
 using namespace std;
 int main() {
-//    std::vector<std::unique_ptr<Jeux>> jeux = std::vector<std::unique_ptr<Jeux>>();
-//    jeux.push_back(make_unique<Puissance4>("Fatih"));
-//    jeux.push_back(make_unique<Morpion>("Fatih"));
-//
-//    jeux[1]->demarrerPartie();
-//
-//    int jeuxChoisi = 0;
-//    int i = 0;
-//    while (true) {
-//        for (auto jeu: jeux) {
-//            std::cout << i++ << " " << jeu->getTitre() << std::endl;
-//        }
-//
-//        std::cout << "Quel jeux ? ";
-//        std::cin >> jeuxChoisi;
-//
-//        jeux[jeuxChoisi]->demarrerPartie();
-//    }
+    while (true) {
+        int jeuxChoisi = 0;
+        std::cout << "1 Morpion" << std::endl;
+        std::cout << "2 Puissance 4" << std::endl;
+        std::cout << "3 Quitter" << std::endl;
+        std::cout << "Quel jeux ? ";
+
+        std::cin >> jeuxChoisi;
+
+        switch (jeuxChoisi) {
+            case 1:
+                Morpion("Fatih").demarrerPartie();
+                break;
+
+            case 2:
+                Puissance4("Fatih").demarrerPartie();
+                break;
+
+            case 3:
+                return 0;
+        }
+    }
 }
