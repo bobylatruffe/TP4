@@ -22,4 +22,6 @@ add_executable(
         src/Morpion.cpp
         include/Jeux.h
         src/Jeux.cpp
+        include/Puissance4.h
+        src/Puissance4.cpp
 )

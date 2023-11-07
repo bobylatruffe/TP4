@@ -11,17 +11,21 @@ class Jeux {
 private:
     std::vector<std::shared_ptr<Joueur>> joueurs;
     Grille grille;
+    std::string nomDuJeu;
 
-    void demanderAJoueurDeJouer(std::shared_ptr<Joueur> joueur);
+    virtual void demanderAJoueurDeJouer(std::shared_ptr<Joueur> joueur) = 0;
 
     virtual std::shared_ptr<Joueur> checkVainqueur() = 0;
 
 public:
-    Jeux(std::string pseudo, const char imgJoueur1, const char imgJoueur2);
+    Jeux(std::string pseudo, const char imgJoueur1, const char imgJoueur2, const int nbLignes, const int nbColonnes, const std::string nomDuJeu);
 
     Grille getGrille();
+
     std::vector<std::shared_ptr<Joueur>> getJoueurs();
 
-    virtual void demarrerPartie() = 0;
+    const std::string getTitre() const;
+
+    void demarrerPartie();
 };
 #endif//TP3_JEUX_H

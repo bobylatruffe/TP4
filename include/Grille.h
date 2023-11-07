@@ -24,6 +24,7 @@ public:
 
     void joueurAJouee(const std::shared_ptr<Joueur> joueur, const int idPion);
     void afficheGrille() const;
+    void afficheGrillePuissance4() const;
     const int getNbLignes();
     const int getNbColonnes();
     const std::vector<std::vector<std::shared_ptr<Pion>>> getGrilleDeJeu() const;

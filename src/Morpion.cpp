@@ -7,11 +7,33 @@
 #include "Ia.h"
 #include <iostream>
 
-Morpion::Morpion(std::string pseudo) : Jeux("Fatih", 'X', 'O') {}
+Morpion::Morpion(std::string pseudo)
+    : Jeux("Fatih", 'X', 'O', 3, 3, "Morpion") {}
 
+//TODO: La méthode de vérification du pion pourrait être déplacer ailleur... et n'est pas optimisé !
 void Morpion::demanderAJoueurDeJouer(std::shared_ptr<Joueur> joueur) {
     Jeux::getGrille().afficheGrille();
-    Jeux::getGrille().joueurAJouee(joueur, joueur->jouer());
+
+    //TODO: S'il ne reste plus de pions lancer une exception pour arreter, personne n'a gagné.
+    auto pionsPossibles = Jeux::getGrille().getEmplacementLibre();
+
+    int idPionJouee = 0;
+    bool idPionEstValide = false;
+    while (!idPionEstValide) {
+        std::cout << "Quelle case jouer ? (" << joueur->getPseudo() << ") : ";
+        idPionJouee = joueur->jouer();
+        std::cout << std::endl;
+
+        for (auto pion: pionsPossibles) {
+            if (idPionJouee == pion->getId()) idPionEstValide = true;
+        }
+
+        // TODO: prévoir si un enum dans Joueur pour savoir si c'est IA et annulé l'affichge du msg suivant et ci-dessus...
+        if (!idPionEstValide)
+            std::cout << "Pion invalide de " << joueur->getPseudo() << std::endl;
+    }
+
+    Jeux::getGrille().joueurAJouee(joueur, idPionJouee);
 }
 
 std::shared_ptr<Joueur> Morpion::checkHorizontales() {
@@ -102,15 +124,4 @@ std::shared_ptr<Joueur> Morpion::checkVainqueur() {
     }
 
     return nullptr;
-}
-
-void Morpion::demarrerPartie() {
-    int i = 0;
-    while (true) {
-        if (i == 2) i = 0;
-        demanderAJoueurDeJouer(Jeux::getJoueurs()[i++]);
-
-        if (checkVainqueur())
-            break;
-    }
 }

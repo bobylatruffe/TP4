@@ -9,7 +9,6 @@ Ia::Ia(std::string pseudo, const char img)
     : Joueur(pseudo, img) {}
 
 const int Ia::jouer() const {
-    //TODO : Limiter au place disponnible !
-
+//    srand(time(nullptr));
     return (rand() % 9) + 1;
 }

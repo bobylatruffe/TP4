@@ -6,9 +6,10 @@
 #include "Humain.h"
 #include "Ia.h"
 
-Jeux::Jeux(std::string pseudo, const char imgJoueur1, const char imgJoueur2)
-    : grille(Grille(3, 3)),
-      joueurs(2) {
+Jeux::Jeux(std::string pseudo, const char imgJoueur1, const char imgJoueur2, const int nbLignes, const int nbColonnes, const std::string nomDuJeu)
+    : grille(Grille(nbLignes, nbColonnes)),
+      joueurs(2),
+      nomDuJeu(nomDuJeu) {
     this->joueurs[0] = std::make_shared<Humain>(pseudo, imgJoueur1);
     this->joueurs[1] = std::make_shared<Ia>("UneIaDeMerde", imgJoueur2);
 }
@@ -19,4 +20,19 @@ Grille Jeux::getGrille() {
 
 std::vector<std::shared_ptr<Joueur>> Jeux::getJoueurs() {
     return joueurs;
+}
+
+void Jeux::demarrerPartie() {
+    int i = 0;
+    while (true) {
+        if (i == 2) i = 0;
+        demanderAJoueurDeJouer(Jeux::getJoueurs()[i++]);
+
+        if (checkVainqueur())
+            break;
+    }
+}
+
+const std::string Jeux::getTitre() const {
+    return nomDuJeu;
 }
