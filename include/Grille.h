@@ -11,14 +11,6 @@
 #include <vector>
 
 class Grille {
-private:
-    const int nbLignes, nbColonnes;
-
-    std::vector<std::vector<std::shared_ptr<Pion>>> grilleDeJeu;
-
-    void initGrille(const char img);
-    std::shared_ptr<Pion> rechercherPionAvecId(const int idPion);
-
 public:
     Grille(int nbLignes, int nbColonnes);
 
@@ -29,6 +21,14 @@ public:
     const int getNbColonnes();
     const std::vector<std::vector<std::shared_ptr<Pion>>> getGrilleDeJeu() const;
     const std::vector<std::shared_ptr<Pion>> getEmplacementLibre();
+
+private:
+    const int nbLignes, nbColonnes;
+
+    std::vector<std::vector<std::shared_ptr<Pion>>> grilleDeJeu;
+    void initGrille(const char img);
+
+    std::shared_ptr<Pion> rechercherPionAvecId(const int idPion);
 };
 
 #endif//TP3_GRILLE_H

@@ -5,7 +5,8 @@
 #include "Grille.h"
 #include <iostream>
 
-Grille::Grille(int nbLignes, int nbColonnes) : nbLignes(nbLignes), nbColonnes(nbColonnes), grilleDeJeu(nbLignes, std::vector<std::shared_ptr<Pion>>(nbColonnes)) {
+Grille::Grille(int nbLignes, int nbColonnes)
+    : nbLignes(nbLignes), nbColonnes(nbColonnes), grilleDeJeu(nbLignes, std::vector<std::shared_ptr<Pion>>(nbColonnes)) {
     initGrille('\0');
 }
 
