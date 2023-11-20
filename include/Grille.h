@@ -13,7 +13,6 @@
 class Grille {
 public:
     Grille(int nbLignes, int nbColonnes);
-
     void joueurAJouee(const std::shared_ptr<Joueur> joueur, const int idPion);
     void afficheGrille() const;
     void afficheGrillePuissance4() const;
@@ -21,12 +20,13 @@ public:
     const int getNbColonnes();
     const std::vector<std::vector<std::shared_ptr<Pion>>> getGrilleDeJeu() const;
     const std::vector<std::shared_ptr<Pion>> getEmplacementLibre();
-
+    void initGrille(const char img);
+    bool estNulle();
 private:
     const int nbLignes, nbColonnes;
 
     std::vector<std::vector<std::shared_ptr<Pion>>> grilleDeJeu;
-    void initGrille(const char img);
+    
 
     std::shared_ptr<Pion> rechercherPionAvecId(const int idPion);
 };

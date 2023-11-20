@@ -1,2 +1,6 @@
 .idea/**
 cmake-build-debug/**
+CMakeCache.txt
+CMakeLists.txt.user
+CMakeFiles/cmake.check_cache
+.gitignore

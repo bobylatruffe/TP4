@@ -8,15 +8,6 @@
 #include "Joueur.h"
 #include <memory>
 class Jeux {
-private:
-    std::vector<std::shared_ptr<Joueur>> joueurs;
-    Grille grille;
-    std::string nomDuJeu;
-
-    virtual void demanderAJoueurDeJouer(std::shared_ptr<Joueur> joueur) = 0;
-
-    virtual std::shared_ptr<Joueur> checkVainqueur() = 0;
-
 public:
     Jeux(std::string pseudo, const char imgJoueur1, const char imgJoueur2, const int nbLignes, const int nbColonnes, const std::string nomDuJeu);
 
@@ -27,5 +18,13 @@ public:
     const std::string getTitre() const;
 
     void demarrerPartie();
+private:
+    std::vector<std::shared_ptr<Joueur>> joueurs;
+    Grille grille;
+    std::string nomDuJeu;
+
+    virtual void demanderAJoueurDeJouer(std::shared_ptr<Joueur> joueur) = 0;
+
+    virtual std::shared_ptr<Joueur> checkVainqueur() = 0;
 };
 #endif//TP3_JEUX_H

@@ -8,6 +8,7 @@
 Puissance4::Puissance4(std::string pseudo)
     : Jeux("Fatih", 'X', 'O', 4, 7, "Puissance4") {}
 
+//Vérification de victoire
 std::shared_ptr<Joueur> Puissance4::checkAlignement() {
     auto grille = Jeux::getGrille();
     auto grilleDeJeu = Jeux::getGrille().getGrilleDeJeu();
@@ -65,7 +66,7 @@ std::shared_ptr<Joueur> Puissance4::checkAlignement() {
 
 //TODO: La méthode de vérification du pion pourrait être déplacer ailleur... et n'est pas optimisé !
 void Puissance4::demanderAJoueurDeJouer(std::shared_ptr<Joueur> joueur) {
-    Jeux::getGrille().afficheGrillePuissance4();
+    Jeux::getGrille().afficheGrille();
 
     //TODO: S'il ne reste plus de pions lancer une exception pour arreter, personne n'a gagné.
     auto pionsPossibles = Jeux::getGrille().getEmplacementLibre();

@@ -11,11 +11,26 @@ Grille::Grille(int nbLignes, int nbColonnes)
 }
 
 void Grille::initGrille(const char img) {
+
+    Pion::next_id=1;
+
     for (int i = 0; i < nbLignes; i++) {
         for (int j = 0; j < nbColonnes; j++) {
             grilleDeJeu[i][j] = std::make_shared<Pion>('\0', i, j);
         }
     }
+}
+
+bool Grille::estNulle() {
+    for (int i = 0; i < nbLignes; i++) {
+        for (int j = 0; j < nbColonnes; j++) {
+            if(grilleDeJeu[i][j]->getImg() != '\0')
+            {
+                return false;
+            }
+        }
+    }
+    return true;
 }
 
 // TODO: Cette méthode et la _Puissance4 doit être factorisé pour être déporter dans respectivement Morpion et Puissance4
@@ -47,7 +62,7 @@ void Grille::afficheGrille() const {
     }
 }
 
-void Grille::afficheGrillePuissance4() const {
+/* void Grille::afficheGrillePuissance4() const {
     for (int i = 1; i <= nbColonnes; i++) {
         std::cout << "  |   " << i << " ";
     }
@@ -66,7 +81,7 @@ void Grille::afficheGrillePuissance4() const {
         std::cout << "  |" << std::endl;
         std::cout << "  ---------------------------------------------------------" << std::endl;
     }
-}
+} */
 
 void Grille::joueurAJouee(const std::shared_ptr<Joueur> joueur, const int idPion) {
     std::shared_ptr<Pion> pionJouee = rechercherPionAvecId(idPion);
@@ -81,7 +96,6 @@ std::shared_ptr<Pion> Grille::rechercherPionAvecId(const int idPion) {
                 return grilleDeJeu[i][j];
         }
     }
-
     return nullptr;
 }
 
