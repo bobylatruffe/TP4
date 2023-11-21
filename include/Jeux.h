@@ -26,5 +26,6 @@ private:
     virtual void demanderAJoueurDeJouer(std::shared_ptr<Joueur> joueur) = 0;
 
     virtual std::shared_ptr<Joueur> checkVainqueur() = 0;
+    virtual bool estNulle() = 0 ;
 };
 #endif//TP3_JEUX_H

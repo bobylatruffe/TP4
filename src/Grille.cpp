@@ -21,10 +21,10 @@ void Grille::initGrille(const char img) {
     }
 }
 
-bool Grille::estNulle() {
+bool Grille::estRemplie() {
     for (int i = 0; i < nbLignes; i++) {
         for (int j = 0; j < nbColonnes; j++) {
-            if(grilleDeJeu[i][j]->getImg() != '\0')
+            if(grilleDeJeu[i][j]->getImg() == '\0')
             {
                 return false;
             }

@@ -19,21 +19,34 @@ void Morpion::demanderAJoueurDeJouer(std::shared_ptr<Joueur> joueur) {
 
     int idPionJouee = 0;
     bool idPionEstValide = false;
+
+    std::cout << "Quelle case jouer ? (" << joueur->getPseudo() << ") : ";
     while (!idPionEstValide) {
-        std::cout << "Quelle case jouer ? (" << joueur->getPseudo() << ") : ";
+      
         idPionJouee = joueur->jouer();
         std::cout << std::endl;
-
-        for (auto pion: pionsPossibles) {
+      
+        for (auto pion: pionsPossibles) 
+        {
             if (idPionJouee == pion->getId()) idPionEstValide = true;
         }
 
-        // TODO: prévoir si un enum dans Joueur pour savoir si c'est IA et annulé l'affichge du msg suivant et ci-dessus...
-        if (!idPionEstValide)
+        if (!(joueur->getPseudo()=="UneIaDeMerde")&& !idPionEstValide)
+        {
             std::cout << "Pion invalide de " << joueur->getPseudo() << std::endl;
+        }
     }
 
     Jeux::getGrille().joueurAJouee(joueur, idPionJouee);
+}
+
+bool Morpion::estNulle()
+{
+    if(getGrille().estRemplie())
+    {
+        std::cout << "Egalité !"<< std::endl;
+    }
+    return getGrille().estRemplie();
 }
 
 std::shared_ptr<Joueur> Morpion::checkHorizontales() {

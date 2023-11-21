@@ -20,5 +20,6 @@ private:
 
     std::shared_ptr<Joueur> checkVainqueur() override;
     void demanderAJoueurDeJouer(std::shared_ptr<Joueur> joueur) override;
+    bool estNulle() override;
 };
 #endif//TP3_MORPION_H

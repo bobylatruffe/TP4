@@ -99,6 +99,10 @@ void Puissance4::demanderAJoueurDeJouer(std::shared_ptr<Joueur> joueur) {
 
     Jeux::getGrille().joueurAJouee(joueur, idPionJoueeConverti);
 }
+bool Puissance4::estNulle()
+{
+    return getGrille().estRemplie();
+}
 
 std::shared_ptr<Joueur> Puissance4::checkVainqueur() {
     std::shared_ptr<Joueur> vainqueur = checkAlignement();

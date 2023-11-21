@@ -21,7 +21,7 @@ public:
     const std::vector<std::vector<std::shared_ptr<Pion>>> getGrilleDeJeu() const;
     const std::vector<std::shared_ptr<Pion>> getEmplacementLibre();
     void initGrille(const char img);
-    bool estNulle();
+    bool estRemplie();
 private:
     const int nbLignes, nbColonnes;
 

@@ -32,10 +32,17 @@ void Jeux::demarrerPartie() {
         }
         demanderAJoueurDeJouer(Jeux::getJoueurs()[i++]);
 
-        if (checkVainqueur()|| grille.estNulle())
+        if (checkVainqueur())
         {
+            grille.afficheGrille();
             break;
         } 
+
+        if ( estNulle())
+        {
+            grille.afficheGrille();
+            break;
+        }
     }
 }
 
