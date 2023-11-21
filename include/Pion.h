@@ -8,18 +8,8 @@
 #include "Joueur.h"
 #include <memory>
 class Pion {
-private:
-    static int next_id;
-
-    const int id;
-    const int x;
-    const int y;
-
-    char img;
-
-    std::shared_ptr<Joueur> joueePar;
-
 public:
+    static int next_id;
     Pion(const char img, const int x, const int y);
 
     const int getId() const;
@@ -29,6 +19,15 @@ public:
 
     const char getImg() const;
     void setImg(const char img);
+private:
+
+    const int id;
+    const int x;
+    const int y;
+
+    char img;
+
+    std::shared_ptr<Joueur> joueePar;
 };
 
 #endif//TP3_PION_H

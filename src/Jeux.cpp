@@ -23,13 +23,26 @@ std::vector<std::shared_ptr<Joueur>> Jeux::getJoueurs() {
 }
 
 void Jeux::demarrerPartie() {
+    grille.initGrille('\0');
     int i = 0;
     while (true) {
-        if (i == 2) i = 0;
+        if (i == 2) 
+        {
+            i = 0;
+        }
         demanderAJoueurDeJouer(Jeux::getJoueurs()[i++]);
 
         if (checkVainqueur())
+        {
+            grille.afficheGrille();
             break;
+        } 
+
+        if ( estNulle())
+        {
+            grille.afficheGrille();
+            break;
+        }
     }
 }
 

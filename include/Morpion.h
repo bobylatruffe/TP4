@@ -10,6 +10,9 @@
 #include <memory>
 #include <vector>
 class Morpion : public Jeux {
+
+public:
+    Morpion(std::string pseudo);
 private:
     std::shared_ptr<Joueur> checkHorizontales();
     std::shared_ptr<Joueur> checkVerticales();
@@ -17,8 +20,6 @@ private:
 
     std::shared_ptr<Joueur> checkVainqueur() override;
     void demanderAJoueurDeJouer(std::shared_ptr<Joueur> joueur) override;
-
-public:
-    Morpion(std::string pseudo);
+    bool estNulle() override;
 };
 #endif//TP3_MORPION_H

@@ -10,13 +10,15 @@
 #include <memory>
 #include <vector>
 class Puissance4 : public Jeux {
+
+public:
+    Puissance4(std::string pseudo);
+
 private:
     std::shared_ptr<Joueur> checkAlignement();
 
     std::shared_ptr<Joueur> checkVainqueur() override;
     void demanderAJoueurDeJouer(std::shared_ptr<Joueur> joueur) override;
-
-public:
-    Puissance4(std::string pseudo);
+    bool estNulle() override;
 };
 #endif//TP3_PUISSANCE4_H
